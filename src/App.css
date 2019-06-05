@@ -1,0 +1,96 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.navbar {
+  padding: 20px;
+  margin-bottom: 40px;
+  background-color: green;
+}
+.bwm-search {
+  height: 30px;
+  width: 300px !important;
+  float:left;
+  background-color: greenyellow;
+}
+.btn-bwm-search {
+  border-color: white;
+  color:white;
+  background-color:greenyellow;
+  height: 30px;
+  width: 50px;
+  float:left;
+  padding: 0px;
+}
+.btn-bwm-add {
+  border-color: greenyellow;
+  color:white;
+  background-color:greenyellow;
+  height: 30px;
+  width: 150px;
+  float:Right;
+  padding: 0px;
+}
+.toBeDeleted{
+  border-color: red;
+}
+
+
+  .card {
+    margin-bottom: 20px;
+    border-color: red;
+
+  }
+
+  .card-block {
+    padding: 20px;
+  }
+
+  .card-title {
+    font-size: 20px;
+  }
+
+  .btn-bwm {
+    font-size: 14px;
+    color: white;
+    padding: 10px 15px;  
+  }
+
+  .card-footer {
+      font-size: 14px;
+      margin-top: 10px;
+
+    }
+
+    .btn-bwm {
+      margin-right: 10px;
+    }
