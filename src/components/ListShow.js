@@ -1,13 +1,23 @@
 import React from 'react';
-import { CreateList } from './CreateList';
+import  CreateList  from './CreateList';
+import  CreateCard  from './CreateCard';
+import CardShow from './CardShow'
+import {connect} from 'react-redux';
+import Card from './Card'
+import {Link} from 'react-router-dom'
+import { CardModal} from './CardModal';
 
-export class ListShow extends React.Component{
+
+ class ListShow extends React.Component{
         constructor(){
            super()
            this.state={
                todoList:[],
-               wantDelete:false
+               card:[],
+               wantDelete:false,
+               modal:false
            }
+           this.onAdd = this.onAdd.bind(this);
         }
         showDeleteMenu(){
             this.setState({
@@ -17,41 +27,63 @@ export class ListShow extends React.Component{
           closeDeleteMenu(){
             this.setState({
               wantDelete:false
+
             })
           }
+          onAdd(card){
+            const cardArr = this.state.card.slice();
+  
+            cardArr.push(card)
+            
+            this.setState({
+                card:cardArr
+            })
+          }
+          cancelConfirmation(){
+            this.setState({
+                modal:
+                {
+                    open:false
+                }
+    
+            })
+        }
+          printArr(card,list){
+            
+            return card.map((item, i) => <CardModal key={i} className=' btn-bwm-add-card' card={item} list={list}/>);
+        }
     render(){
-        const {wantDelete} = this.state
-
+        console.log(this.state.card)
+        const {wantDelete ,card} = this.state
+       const {list } = this.props;
+       // list.lenght>0 
+       // console.log(list.newTitle) 
+       
         return(
-            <div className='row'>
+            <div class ='row'>
+            
+            
+          
             <div className='col-md-4'>
             <div className='card text-center' >
-              <div className='card-block'>
-           <div>
-               {
-                   !wantDelete &&
-                   <button onClick={()=>{this.showDeleteMenu()}} className=' btn-bwm-add' type='submit'>Add List</button> 
+              <div className='card-block'>   
+             <h2>{list.newTitle}</h2>
+              {this.printArr(card,list)}
+              <CreateCard onAdd ={this.onAdd}/>
 
-               }
-            { 
-                wantDelete &&
-                <div>
-                <div className='form-group'>
-                <label htmlFor='guests'>Guests</label>
-                <input  onChange={(event)=>this.selectGuest(event)}type='text' className='form-control' id='guests' aria-describedby='emailHelp' placeholder=''></input>
-                </div>
-                <div className='delete-menu'>
-                Do you confirm?
-                <button className='btn btn-danger'>Yes</button>
-                <button onClick={()=>{this.closeDeleteMenu()}}className ='btn btn-success'>No</button>
-                </div>
-                </div>
-            }
+            <div className='card-footer text'>
             </div>
             </div>
+
             </div>
             </div>
+          
+        
             </div>
+           
+    
         )
     }
 }
+
+export default ListShow;

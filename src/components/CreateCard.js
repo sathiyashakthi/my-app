@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-class CreateList extends React.Component{
+class CreateCard extends React.Component{
 
-        constructor(){
-            super()
+        constructor(props){
+            super(props)
             this.state={
                 todoList:[],
                 wantDelete:false
@@ -24,21 +24,24 @@ class CreateList extends React.Component{
 
             handleEdit = (e) => {
               e.preventDefault();
-              const newTitle = this.getTitle.value;
+              const newTitle = this.getCardTitle.value;
               const data = {
                 id: new Date(),
-                card :[],
-                newTitle
+                list:this.props.list
+               
             
               }
-              this.props.dispatch({
-                type:'ADD_LIST',
+              debugger;
+              this.props.onAdd(newTitle)
+              this.setState({
+                wantDelete:false
+  
+              })
+
+            /*  this.props.dispatch({
+                type:'ADD_CARD',
                 data});
-                
-                this.setState({
-                    wantDelete:false
-      
-                  })
+*/
             }
             
     render(){
@@ -47,7 +50,7 @@ class CreateList extends React.Component{
             <div>
             {
                 !wantDelete &&
-                <button onClick={()=>{this.showDeleteMenu()}} className=' btn-bwm-add' type='submit'>Add List</button> 
+                <button onClick={()=>{this.showDeleteMenu()}} className=' btn-bwm-add-card' type='submit'>Add Card</button> 
 
             }
          { 
@@ -55,12 +58,12 @@ class CreateList extends React.Component{
              <div>
              <div className='form-group'>
                  <form onSubmit={this.handleEdit}>
-                 <input required type="text" ref={(input) => this.getTitle = input}
+                 <input required type="text" ref={(input) => this.getCardTitle = input}
                  placeholder="Enter Post Title" />
              </form >
              </div>
              <div className='delete-menu'>
-             <button onClick={()=>{this.AddList()}} className='btn btn-danger'>AddList</button>
+             <button onClick={()=>{this.AddList()}} className='btn btn-danger'>Addcard</button>
              <button onClick={()=>{this.closeDeleteMenu()}}className ='btn btn-success'>Cancel</button>
              </div>
              </div>
@@ -72,4 +75,4 @@ class CreateList extends React.Component{
    
    
 }
-export default connect()(CreateList);
+export default connect()(CreateCard);
