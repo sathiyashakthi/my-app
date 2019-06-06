@@ -9,7 +9,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: greenyellow;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -34,7 +34,7 @@
 .navbar {
   padding: 20px;
   margin-bottom: 40px;
-  background-color: green;
+  background-color:green;
 }
 .bwm-search {
   height: 30px;
@@ -57,22 +57,35 @@
   background-color:greenyellow;
   height: 30px;
   width: 150px;
-  float:Right;
+  float:left;
   padding: 0px;
 }
-.toBeDeleted{
-  border-color: red;
+
+.btn-bwm-add-card {
+  border-color:cornsilk;
+  color:black;
+  background-color:#fff;
+  height: 30px;
+  width: 250px;
+  padding: 0px;
+  margin-bottom: 12px;
+
 }
 
-
   .card {
-    margin-bottom: 20px;
+    margin-top: auto;
+    margin-bottom: 500px;
+    margin-left: 20px;
     border-color: red;
+    height: 50px;
+    width: 300px;
 
   }
 
   .card-block {
     padding: 20px;
+    background-color:#dfe1e6;
+
   }
 
   .card-title {
@@ -88,9 +101,12 @@
   .card-footer {
       font-size: 14px;
       margin-top: 10px;
+      background-color:#dfe1e6;
+
 
     }
 
     .btn-bwm {
       margin-right: 10px;
     }
+    
