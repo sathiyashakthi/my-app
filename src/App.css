@@ -33,59 +33,59 @@
 }
 .navbar {
   padding: 20px;
-  margin-bottom: 40px;
-  background-color:green;
+  background-color:#40a35b;
 }
 .bwm-search {
-  height: 30px;
-  width: 300px !important;
-  float:left;
-  background-color: greenyellow;
+  padding:5px;
+  background-color: #79be8c;
+  border: none;
+  border-radius: 5px;
 }
 .btn-bwm-search {
   border-color: white;
   color:white;
-  background-color:greenyellow;
-  height: 30px;
-  width: 50px;
-  float:left;
-  padding: 0px;
+  background-color:deepskyblue;
+  padding: 10px;
+  border:none;
+  border-radius: 5px;
+  margin-left:5px;
 }
 .btn-bwm-add {
   border-color: greenyellow;
   color:white;
   background-color:greenyellow;
-  height: 30px;
-  width: 150px;
-  float:left;
-  padding: 0px;
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  border:none;
 }
 
 .btn-bwm-add-card {
-  border-color:cornsilk;
   color:black;
+  font-weight: bold;
   background-color:#fff;
   height: 30px;
   width: 250px;
   padding: 0px;
   margin-bottom: 12px;
-
 }
 
   .card {
-    margin-top: auto;
-    margin-bottom: 500px;
+    /* margin-top: auto; */
     margin-left: 20px;
-    border-color: red;
-    height: 50px;
+    border-color:#dfe1e6;
     width: 300px;
+    margin-bottom: 15px;
+    border:none !Important;
 
   }
 
   .card-block {
-    padding: 20px;
+    padding: 0px;
     background-color:#dfe1e6;
-
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    
   }
 
   .card-title {
@@ -93,6 +93,7 @@
   }
 
   .btn-bwm {
+    margin-top: 10px;
     font-size: 14px;
     color: white;
     padding: 10px 15px;  
@@ -109,4 +110,60 @@
     .btn-bwm {
       margin-right: 10px;
     }
+    .btn{
+      margin-right: 10px;
+    }
     
+    
+  .list-container{
+    display :flex;
+    justify-content: space-between;
+    padding:50px;
+
+  }
+ 
+  .list-view-card {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .form-style{
+    padding: 20px 0;
+  }
+
+  .card-byepass {
+    background-color: transparent !important;
+  }
+
+  .list-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 25px;
+  }
+.list-style{
+  list-style: none;
+}
+
+.rental-booking-modal {
+  width:50%;
+  border-radius: 10px;
+}
+
+.button{
+  border: none;
+  border-radius: 3px;
+  color: white;
+}
+.add{
+  background-color: green;
+  color: white;
+}
+.remove {
+  background-color: #ef4402;
+  color: white;
+}
+
+.font-color {
+  color: blue;
+}

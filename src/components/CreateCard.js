@@ -7,7 +7,8 @@ class CreateCard extends React.Component{
             super(props)
             this.state={
                 todoList:[],
-                wantDelete:false
+                wantDelete:false,
+                enablebtt:false
             }
          }
          showDeleteMenu(){
@@ -31,7 +32,6 @@ class CreateCard extends React.Component{
                
             
               }
-              debugger;
               this.props.onAdd(newTitle)
               this.setState({
                 wantDelete:false
@@ -43,29 +43,46 @@ class CreateCard extends React.Component{
                 data});
 */
             }
+            deleteMultipleCards() {
+              let filtered = this.props.card.filter(function(value){
+
+                return value.isSelected === false;
+            
+            });
+            this.props.onRmCard(filtered)
+           
+            }
             
     render(){
         const {wantDelete} =this.state
+        
+        console.log( this.props.enab);
         return(
             <div>
             {
-                !wantDelete &&
-                <button onClick={()=>{this.showDeleteMenu()}} className=' btn-bwm-add-card' type='submit'>Add Card</button> 
-
+              
+                !wantDelete && 
+                <div>
+                <button class=" btn-bwm-add-card button add" disabled={this.props.enab} onClick={()=>{this.showDeleteMenu()}}  type='submit'>Add Card</button> 
+                <button class=" btn-bwm-add-card button remove" onClick={()=>{this.deleteMultipleCards()}}>Remove Card</button>
+                </div>
+              
             }
          { 
              wantDelete &&
              <div>
              <div className='form-group'>
                  <form onSubmit={this.handleEdit}>
-                 <input required type="text" ref={(input) => this.getCardTitle = input}
-                 placeholder="Enter Post Title" />
+                 <input required type="text" ref={(input) => this.getCardTitle = input} maxLength='8'
+                 placeholder="Enter a Title for this Card" />
+                 <hr></hr>
+             <div className='delete-menu'>
+             <button type='submit'  className='btn btn-success '>Add</button>
+             <button onClick={()=>{this.closeDeleteMenu()}}className ='btn btn-danger'>Cancel</button>
+             </div>
              </form >
              </div>
-             <div className='delete-menu'>
-             <button onClick={()=>{this.AddList()}} className='btn btn-danger'>Addcard</button>
-             <button onClick={()=>{this.closeDeleteMenu()}}className ='btn btn-success'>Cancel</button>
-             </div>
+
              </div>
          }
          </div>

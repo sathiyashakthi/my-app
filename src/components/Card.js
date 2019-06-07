@@ -15,7 +15,6 @@ import ListShow from './ListShow';
         }
         
     render(){
-        debugger;
         console.log(this.props.card)
         
         const {wantDelete} = this.state

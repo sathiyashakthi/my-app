@@ -16,10 +16,14 @@ class App extends Component {
       <provider>
       <div className="App">
         <Header/>
-
-        <div className='container'>
+      <div class="list-container">
+        <div class="list-view-card">
           <List/>
 
+        </div>
+        <div>
+        <CreateList/>
+        </div>
         </div>
       </div>
       </provider>

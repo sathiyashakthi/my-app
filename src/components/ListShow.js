@@ -12,12 +12,15 @@ import { CardModal} from './CardModal';
         constructor(){
            super()
            this.state={
-               todoList:[],
+          
                card:[],
                wantDelete:false,
-               modal:false
+               modal:false,
+               enab:false
            }
            this.onAdd = this.onAdd.bind(this);
+           this.onRmCard =this.onRmCard.bind(this);
+           this.onchgBt = this.onchgBt.bind(this);
         }
         showDeleteMenu(){
             this.setState({
@@ -32,12 +35,27 @@ import { CardModal} from './CardModal';
           }
           onAdd(card){
             const cardArr = this.state.card.slice();
-  
-            cardArr.push(card)
+            const data = {
+              title:card,
+              isSelected:false
+          
+            }
+
+            
+            cardArr.push(data)
             
             this.setState({
-                card:cardArr
+                card:cardArr,
+                enab:false
             })
+          }
+          onRmCard(filtered){
+            const cardArr = this.state.card.slice();
+            this.setState({
+              card:JSON.parse(JSON.stringify(filtered))
+
+          })
+          this.forceUpdate()
           }
           cancelConfirmation(){
             this.setState({
@@ -48,37 +66,38 @@ import { CardModal} from './CardModal';
     
             })
         }
+        onchgBt(enablebutt){
+          this.setState({
+            enab:enablebutt
+          })
+        }
           printArr(card,list){
             
-            return card.map((item, i) => <CardModal key={i} className=' btn-bwm-add-card' card={item} list={list}/>);
-        }
+            return card.map((item, i) => <CardModal key={i} className=' btn-bwm-add-card' card={item} list={list} onchgBt={this.onchgBt} />);
+
+          }
     render(){
-        console.log(this.state.card)
-        const {wantDelete ,card} = this.state
+        const {wantDelete ,card,enab} = this.state
        const {list } = this.props;
        // list.lenght>0 
        // console.log(list.newTitle) 
        
         return(
-            <div class ='row'>
-            
-            
-          
-            <div className='col-md-4'>
-            <div className='card text-center' >
+            <div className='card card-byepass' >
               <div className='card-block'>   
-             <h2>{list.newTitle}</h2>
+              <div class="list-header"> 
+             <div class=".px-2"><h2>{list.newTitle}</h2></div><button onClick={()=>this.props.dispatch({type:'DELETE_POST',id:list.id})} class=" btn remove" aria-hidden="true"><i class="fa fa-trash"></i></button>
+            </div>
               {this.printArr(card,list)}
-              <CreateCard onAdd ={this.onAdd}/>
-
-            <div className='card-footer text'>
+             
+            <div className='card-footer text-center'>
+            <CreateCard onAdd ={this.onAdd}
+                  card={card}
+                 onRmCard={this.onRmCard}
+                 enab={enab} />
             </div>
             </div>
 
-            </div>
-            </div>
-          
-        
             </div>
            
     
@@ -86,4 +105,5 @@ import { CardModal} from './CardModal';
     }
 }
 
-export default ListShow;
+export default connect()(ListShow);
+
